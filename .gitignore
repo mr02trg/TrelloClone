@@ -1,6 +1,7 @@
 TrelloCloneApi/.vs
 TrelloCloneApi/*/bin/
 TrelloCloneApi/*/obj/
+TrelloCloneApi/TrelloCloneEF/Migrations/
 
 # compiled output
 TrelloCloneWebUI/dist
