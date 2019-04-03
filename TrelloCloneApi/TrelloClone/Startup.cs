@@ -68,6 +68,15 @@ namespace TrelloClone
             });
 
             services.AddMvc();
+
+            // register swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info()
+                {
+                    Title = "Trello Clone Core Api",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,6 +90,12 @@ namespace TrelloClone
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trello Clone Core Api");
+            });
 
 
             app.Run(async (context) =>
