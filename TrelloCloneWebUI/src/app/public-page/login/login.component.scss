@@ -1,0 +1,9 @@
+a.forgot-password {
+	text-decoration: underline;
+    color: #888;
+    cursor: pointer;
+    &:hover, &:focus {
+        text-decoration: underline;
+        color: #666;
+    }
+}

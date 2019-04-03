@@ -1,0 +1,51 @@
+TrelloCloneApi/.vs
+TrelloCloneApi/*/bin/
+TrelloCloneApi/*/obj/
+
+# compiled output
+TrelloCloneWebUI/dist
+TrelloCloneWebUI/tmp
+TrelloCloneWebUI/out-tsc
+
+TrelloCloneWebUI/.editorconfig
+
+# Only exists if Bazel was run
+TrelloCloneWebUI/bazel-out
+
+# dependencies
+TrelloCloneWebUI/node_modules
+
+# profiling files
+TrelloCloneWebUI/chrome-profiler-events.json
+TrelloCloneWebUI/speed-measure-plugin.json
+
+# IDEs and editors
+TrelloCloneWebUI/.idea
+TrelloCloneWebUI/.project
+TrelloCloneWebUI/.classpath
+TrelloCloneWebUI/.c9/
+TrelloCloneWebUI/*.launch
+TrelloCloneWebUI/.settings/
+TrelloCloneWebUI/*.sublime-workspace
+
+# IDE - VSCode
+TrelloCloneWebUI/.vscode/*
+TrelloCloneWebUI/!.vscode/settings.json
+TrelloCloneWebUI/!.vscode/tasks.json
+TrelloCloneWebUI/!.vscode/launch.json
+TrelloCloneWebUI/!.vscode/extensions.json
+TrelloCloneWebUI/.history/*
+
+# misc
+TrelloCloneWebUI/.sass-cache
+TrelloCloneWebUI/connect.lock
+TrelloCloneWebUI/coverage
+TrelloCloneWebUI/libpeerconnection.log
+TrelloCloneWebUI/npm-debug.log
+TrelloCloneWebUI/yarn-error.log
+TrelloCloneWebUI/testem.log
+TrelloCloneWebUI/typings
+
+# System Files
+TrelloCloneWebUI/.DS_Store
+TrelloCloneWebUI/Thumbs.db

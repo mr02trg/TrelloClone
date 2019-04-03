@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+input.form-control {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    
+    &:hover, &:focus {
+        outline:none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-color: #ccc;
+    }
+}

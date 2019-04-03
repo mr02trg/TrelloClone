@@ -1,0 +1,43 @@
+
+.card.card-body{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    ::ng-deep{
+        ngb-tabset {
+            ul.nav-tabs {
+                margin-bottom: 20px;
+                border: none;
+                li.nav-item {
+                    width: 50%;
+                    text-align: center;
+                    a.nav-link {
+                        border: none;
+                        text-decoration: none;
+                        color: #666;
+                        font-weight: bold;
+                        font-size: 15px;
+                        -webkit-transition: all 0.1s linear;
+                        -moz-transition: all 0.1s linear;
+                        transition: all 0.1s linear;
+
+                        &.active {
+                            color: #28a745;
+                            font-size: 18px;
+                            background-color: unset;
+                        }
+
+                        &:hover {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        button.btn.btn-outline-success {
+            min-width: 300px;
+        }
+    }
+}

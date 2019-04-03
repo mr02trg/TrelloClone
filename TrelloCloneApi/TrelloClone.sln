@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloClone", "TrelloClone\TrelloClone.csproj", "{5EE93BE3-5109-4E5F-A010-C5C6705086E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{16A767C3-0059-40A2-88AE-59517BD35881}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloCloneEF", "TrelloCloneEF\TrelloCloneEF.csproj", "{E29112DC-97A3-49C6-BEFB-B6BBBF57400F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloCloneEFModel", "TrelloCloneEFModel\TrelloCloneEFModel.csproj", "{5FB32E7E-A45B-4E2C-8F44-2955917D5759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloCloneViewModel", "TrelloCloneViewModel\TrelloCloneViewModel.csproj", "{D2189E6F-830B-4A31-8C8C-98D3E3FE4DCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5EE93BE3-5109-4E5F-A010-C5C6705086E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE93BE3-5109-4E5F-A010-C5C6705086E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE93BE3-5109-4E5F-A010-C5C6705086E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE93BE3-5109-4E5F-A010-C5C6705086E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E29112DC-97A3-49C6-BEFB-B6BBBF57400F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E29112DC-97A3-49C6-BEFB-B6BBBF57400F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E29112DC-97A3-49C6-BEFB-B6BBBF57400F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E29112DC-97A3-49C6-BEFB-B6BBBF57400F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FB32E7E-A45B-4E2C-8F44-2955917D5759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FB32E7E-A45B-4E2C-8F44-2955917D5759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FB32E7E-A45B-4E2C-8F44-2955917D5759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FB32E7E-A45B-4E2C-8F44-2955917D5759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2189E6F-830B-4A31-8C8C-98D3E3FE4DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2189E6F-830B-4A31-8C8C-98D3E3FE4DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2189E6F-830B-4A31-8C8C-98D3E3FE4DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2189E6F-830B-4A31-8C8C-98D3E3FE4DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E29112DC-97A3-49C6-BEFB-B6BBBF57400F} = {16A767C3-0059-40A2-88AE-59517BD35881}
+		{5FB32E7E-A45B-4E2C-8F44-2955917D5759} = {16A767C3-0059-40A2-88AE-59517BD35881}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4925D29C-5547-4B8E-86D7-DA2D8C0A77D5}
+	EndGlobalSection
+EndGlobal
