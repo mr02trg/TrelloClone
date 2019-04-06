@@ -72,7 +72,7 @@ namespace TrelloClone
             // register swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info()
+                c.SwaggerDoc("v2", new Swashbuckle.AspNetCore.Swagger.Info()
                 {
                     Title = "Trello Clone Core Api",
                 });
@@ -94,7 +94,7 @@ namespace TrelloClone
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Trello Clone Core Api");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Trello Clone Core Api");
             });
 
 
