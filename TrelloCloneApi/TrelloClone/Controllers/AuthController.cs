@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using TrelloCloneEFModel;
-using TrelloCloneViewModel.Authentication;
+using TrelloCloneViewModel;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -41,6 +41,8 @@ namespace TrelloClone.Controllers
                 Email = model.Email,
                 UserName = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                FirstName = model.FirstName,
+                LastName = model.LastName,
             };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
@@ -52,6 +54,7 @@ namespace TrelloClone.Controllers
 
         [Route("login")]
         [HttpPost]
+        [ProducesResponseType(typeof(UserDetailModel), 200)]
         public async Task<ActionResult> Login([FromBody] LoginViewModel model)
         {
             if (!ModelState.IsValid)
@@ -80,6 +83,13 @@ namespace TrelloClone.Controllers
                 return Ok(
                   new
                   {
+                      user = new UserDetailModel()
+                      {
+                          Id = user.Id,
+                          Email = user.Email,
+                          FirstName = user.FirstName,
+                          LastName = user.LastName
+                      },
                       token = new JwtSecurityTokenHandler().WriteToken(token),
                       expiration = token.ValidTo
                   });

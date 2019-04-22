@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace TrelloCloneViewModel.Authentication
+namespace TrelloCloneViewModel
 {
     public class RegisterViewModel
     {

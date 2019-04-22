@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private storage: StorageService
+  ) { }
 
   ngOnInit() {
+    // if already authenticated
+    if (this.storage.User) {
+      this.router.navigate(["/home"]);
+    }
   }
 
 }
