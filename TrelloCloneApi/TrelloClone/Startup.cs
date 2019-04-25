@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,9 +21,17 @@ namespace TrelloClone
     public class Startup
     {
         private readonly IConfiguration _config;
-        public Startup(IConfiguration config)
+        public IConfigurationRoot Configuration { get; private set; }
+
+        public Startup(IConfiguration config, IHostingEnvironment env)
         {
             _config = config;
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+            this.Configuration = builder.Build();
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -97,12 +106,29 @@ namespace TrelloClone
                 c.SwaggerEndpoint("/swagger/v2/swagger.json", "Trello Clone Core Api");
             });
 
+            // ensure db is always created
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                context.Database.EnsureCreated();
+            }
 
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
             });
 
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Add any Autofac modules or registrations.
+            // This is called AFTER ConfigureServices so things you
+            // register here OVERRIDE things registered in ConfigureServices.
+            //
+            // You must have the call to AddAutofac in the Program.Main
+            // method or this won't be called.
+            builder.RegisterModule(new AutofacModule());
         }
     }
 }

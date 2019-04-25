@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getValues();
+    this.getBoard();
   }
 
   getValues() {
@@ -25,6 +26,18 @@ export class HomeComponent implements OnInit {
         .subscribe(x => {
           console.log(x);
         })
+  }
+
+  getBoard() {
+    this.http
+        .get("api/board/1")
+        .subscribe(x => {
+          console.log(x);
+        })
+  }
+
+  create() {
+    
   }
 
 }

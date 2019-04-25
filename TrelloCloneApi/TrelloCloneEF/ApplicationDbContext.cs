@@ -4,16 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TrelloCloneEF.Contexts;
 using TrelloCloneEFModel;
 
 namespace TrelloCloneEF
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser, IdentityRole<long>, long>
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser, IdentityRole<long>, long>,
+                                       IBoardContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
         {
         }
+
+        public DbSet<Board> Boards { get; set; }
+        public DbSet<Bucket> Buckets { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<SubTask> SubTasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
