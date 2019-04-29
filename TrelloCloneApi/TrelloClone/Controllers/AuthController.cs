@@ -65,8 +65,9 @@ namespace TrelloClone.Controllers
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
-                var claim = new[] {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString())
+                // create claim
+                var claim = new List<Claim> {
+                    new Claim("uid", user.Id.ToString())
                 };
                 var signinKey = new SymmetricSecurityKey(
                   Encoding.UTF8.GetBytes(_config["Jwt:SigningKey"]));
@@ -77,7 +78,8 @@ namespace TrelloClone.Controllers
                   issuer: _config["Jwt:Site"],
                   audience: _config["Jwt:Site"],
                   expires: DateTime.UtcNow.AddMinutes(expiryInMinutes),
-                  signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
+                  signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256),
+                  claims: claim
                 );
 
                 return Ok(

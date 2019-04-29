@@ -11,7 +11,7 @@ using TrelloCloneViewModel.Trello;
 namespace TrelloClone.Controllers
 {
     [Route("api/[controller]")]
-    public class BoardController : ControllerBase
+    public class BoardController : BaseController
     {
         private IBoardService _service;
 
@@ -23,7 +23,7 @@ namespace TrelloClone.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            IList<TrelloViewModel> boards = _service.GetBoards(0);
+            IList<TrelloViewModel> boards = _service.GetBoards(this.UserId);
             return Ok(
             new
             {
