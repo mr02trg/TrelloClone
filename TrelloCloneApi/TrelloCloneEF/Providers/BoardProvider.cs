@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TrelloCloneDBInterfaces;
 using TrelloCloneEF.Contexts;
@@ -11,9 +13,11 @@ namespace TrelloCloneEF.Providers
     public class BoardProvider : IBoardProvider
     {
         IBoardContext _context;
-        public BoardProvider(IBoardContext context)
+        IMapper _mapper;
+        public BoardProvider(IBoardContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public long CreateBoard(long userId, TrelloRequest request)
@@ -34,12 +38,16 @@ namespace TrelloCloneEF.Providers
 
         public TrelloViewModel GetBoard(long id)
         {
-            throw new NotImplementedException();
+            var record = _context.Boards.First(x => x.Id == id);
+
+            return _mapper.Map<TrelloViewModel>(record);
         }
 
         public IList<TrelloViewModel> GetBoards(long userId)
         {
-            throw new NotImplementedException();
+            var records = _context.Boards.Where(x => x.ApplicationUserId == userId).ToList();
+
+            return _mapper.Map<IList<TrelloViewModel>>(records);
         }
     }
 }

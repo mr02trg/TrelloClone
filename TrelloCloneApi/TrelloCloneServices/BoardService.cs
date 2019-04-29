@@ -22,18 +22,12 @@ namespace TrelloCloneServices
 
         public TrelloViewModel GetBoard(long id)
         {
-            var board = new TrelloViewModel()
-            {
-                Id = 1,
-                Name = "Board 1",
-                Description = "Dummy Data"
-            };
-            return board;
+            return _provider.GetBoard(id);
         }
 
         public IList<TrelloViewModel> GetBoards(long userId)
         {
-            return new List<TrelloViewModel>();
+            return _provider.GetBoards(userId);
         }
     }
 }

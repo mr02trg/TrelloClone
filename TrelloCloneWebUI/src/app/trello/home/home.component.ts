@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   getBoard() {
     this.http
-        .get("api/board/1")
+        .get("api/board")
         .subscribe(x => {
           console.log(x);
         })

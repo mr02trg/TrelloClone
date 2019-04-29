@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,24 +38,27 @@ namespace TrelloClone
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Register DB Context
             services.AddDbContext<ApplicationDbContext>(
-                option => option.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+                                option => option.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+            #endregion
 
-            // register identity frame work
+            #region Register Identity Framework
             services.AddIdentity<ApplicationUser, IdentityRole<long>>(
-                        option =>
-                        {
-                            option.Password.RequireDigit = false;
-                            option.Password.RequiredLength = 4;
-                            option.Password.RequireUppercase = false;
-                            option.Password.RequireLowercase = false;
-                            option.Password.RequireNonAlphanumeric = false;
-                        }
-                    )
-                    .AddEntityFrameworkStores<ApplicationDbContext>()
-                    .AddDefaultTokenProviders();
+                option =>
+                {
+                    option.Password.RequireDigit = false;
+                    option.Password.RequiredLength = 4;
+                    option.Password.RequireUppercase = false;
+                    option.Password.RequireLowercase = false;
+                    option.Password.RequireNonAlphanumeric = false;
+                }
+            )
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+            #endregion
 
-            // register jwt authetication
+            #region Register JWT Authentication
             services.AddAuthentication(option =>
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -75,10 +79,11 @@ namespace TrelloClone
                 };
 
             });
+            #endregion
 
             services.AddMvc();
 
-            // register swagger
+            #region Register Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new Swashbuckle.AspNetCore.Swagger.Info()
@@ -86,6 +91,15 @@ namespace TrelloClone
                     Title = "Trello Clone Core Api",
                 });
             });
+            #endregion
+
+            #region Register AutoMapper
+            var config = new MapperConfiguration(
+                cfg => cfg.AddProfile(new AutoMapperConfig()));
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
