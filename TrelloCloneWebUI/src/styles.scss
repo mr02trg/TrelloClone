@@ -17,3 +17,16 @@ input.form-control {
         border-color: #ccc;
     }
 }
+
+
+button.btn {
+    &:active, &:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
+
+
+    &.icon {
+        padding: 10px;
+    }
+}

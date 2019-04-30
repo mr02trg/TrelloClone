@@ -45,7 +45,7 @@ namespace TrelloClone.Controllers
         [HttpPost]
         public ActionResult Create([FromBody]TrelloRequest request)
         {
-            long boardId = _service.CreateBoard(1, request);
+            long boardId = _service.CreateBoard(this.UserId, request);
             return Ok(new
             {
                 data = boardId

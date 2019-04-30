@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { UserDetailModel } from 'src/app/models/models';
+import { UserDetailModel } from 'src/app/swagger/model/userDetailModel';
 
 import { StorageService } from 'src/app/services/storage.service';
 
