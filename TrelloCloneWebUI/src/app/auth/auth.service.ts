@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegisterViewModel } from '../swagger';
+import { RegisterViewModel } from 'src/app/swagger/model/registerViewModel';
+import { LoginViewModel } from 'src/app/swagger/model/loginViewModel';
 import { Observable } from 'rxjs';
-import { LoginViewModel } from '../models/models';
 
 @Injectable({
   providedIn: 'root'

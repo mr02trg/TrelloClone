@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserDetailModel } from '../models/userDetailModel';
+import { UserDetailModel } from 'src/app/swagger/model/userDetailModel';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { clone } from 'lodash';

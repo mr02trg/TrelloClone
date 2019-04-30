@@ -51,7 +51,5 @@ TrelloCloneWebUI/typings
 TrelloCloneWebUI/.DS_Store
 TrelloCloneWebUI/Thumbs.db
 
-# Ignore all swagger generated
-
-TrelloCloneWebUI/src/app/swagger/*
+# Ignore all swagger cli
 TrelloCloneWebUI/swagger-codegen-cli.jar
