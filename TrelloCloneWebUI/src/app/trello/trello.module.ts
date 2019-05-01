@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
+import { BoardCreateComponent } from './home/board-create/board-create.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
@@ -12,7 +13,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    BoardCreateComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,9 @@ const routes: Routes = [
   ],
   exports: [
     HomeComponent
+  ],
+  entryComponents: [
+    BoardCreateComponent
   ]
 })
 export class TrelloModule { }

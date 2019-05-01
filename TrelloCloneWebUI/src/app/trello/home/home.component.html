@@ -1,28 +1,14 @@
 
 <div class="container">
   <div class="row">
-    <div *ngFor="let board of boards" class="col-md-4 mb-3">
+    <div *ngFor="let board of boards" class="col-md-3 mb-3">
       <div class="card card-body">
-        {{board.name}}
+        <div class="board-name">{{board.name}}</div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card card-body">
-        <div *ngIf="editMode">
-          <div class="form-group">
-            <input type="text" class="form-control" [(ngModel)]="request.name"  placeholder="Board Name" />
-          </div>
-          <div>
-            <input type="text" class="form-control" [(ngModel)]="request.description" placeholder="Board Description" />
-          </div>
-          <div class="d-flex justify-content-end">
-            <button class="btn icon" (click)="create()" ><i class="fas fa-check"></i></button>
-            <button class="btn icon" (click)="cancel()"><i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <button *ngIf="!editMode" class="btn btn-light" (click)="editMode = true"><i class="fas fa-plus"></i> Add Board</button>
+    <div class="col-md-3 mb-3">
+      <div class="card card-body btn-secondary" (click)="create()">
+        <div class="add-board"><i class="fas fa-plus"></i> Add Board</div>
       </div>
     </div>
   </div>

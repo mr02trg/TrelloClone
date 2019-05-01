@@ -30,3 +30,12 @@ button.btn {
         padding: 10px;
     }
 }
+
+// modal
+.modal-footer {
+    padding-top: 0 !important;
+    border: none !important;
+    .btn:not(:last-child) {
+        margin-right: 15px;
+    }
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { TrelloViewModel } from 'src/app/swagger/model/trelloViewModel';
 import { BoardService } from 'src/app/services/board.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BoardCreateComponent } from './board-create/board-create.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,8 @@ import { BoardService } from 'src/app/services/board.service';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private boardService: BoardService
+    private boardService: BoardService,
+    private modal: NgbModal
   ) { }
 
   boards: TrelloViewModel[] = [];
@@ -37,27 +40,21 @@ export class HomeComponent implements OnInit {
   }
 
   create() {
-    this.boardService
-        .createBoard(this.request)
-        .subscribe( success => {
-          this.request.id = success['data'];
-          this.boards.push(this.request);
-          this.reset();
+    const modalRef = this.modal.open(BoardCreateComponent);
+
+    modalRef.result.then(
+      success => {
+        this.boardService
+        .createBoard(success)
+        .subscribe( response => {
+          success.id = response['data'];
+          this.boards.unshift(success);
         }, error => {
 
         })
+      },
+      cancel => {
+      }
+    )
   }
-
-  cancel() {
-    this.editMode = false;
-    this.reset();
-  }
-
-  reset() {
-    this.request = {
-      name: '',
-      description: ''
-    }
-  }
-
 }

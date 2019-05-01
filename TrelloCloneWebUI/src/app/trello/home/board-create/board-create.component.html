@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create Board</h4>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <input [(ngModel)]="board.name" type="text" class="form-control" placeholder="Name" />
+  </div>
+  <div class="form-group">
+    <input [(ngModel)]="board.description" type="text" class="form-control" placeholder="Description" />
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-border" (click)="onCancel()" >Cancel</button>
+    <button class="btn btn-primary" (click)="onSubmit()">Create</button>
+  </div>
+</div>

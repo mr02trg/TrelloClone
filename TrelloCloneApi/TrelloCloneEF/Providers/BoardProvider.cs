@@ -45,7 +45,9 @@ namespace TrelloCloneEF.Providers
 
         public IList<TrelloViewModel> GetBoards(long userId)
         {
-            var records = _context.Boards.Where(x => x.ApplicationUserId == userId).ToList();
+            var records = _context.Boards.Where(x => x.ApplicationUserId == userId)
+                                  .OrderByDescending(x => x.CreatedDate)
+                                  .ToList();
 
             return _mapper.Map<IList<TrelloViewModel>>(records);
         }

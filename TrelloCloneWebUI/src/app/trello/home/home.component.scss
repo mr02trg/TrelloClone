@@ -1,3 +1,23 @@
 .card.card-body {
-    min-height: 80px;
+    height: 80px;
+
+    &.btn-secondary {
+        cursor: pointer;
+        color: unset;
+        &:hover {
+            color: white;
+        }
+        .add-board {
+            height: 100%;
+            vertical-align: middle;
+            line-height: 2.5;
+            text-align: center;
+        }
+    }
+
+    .board-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
 }
