@@ -8,7 +8,8 @@ namespace TrelloCloneInterfaces
     public interface IBoardService
     {
         IList<TrelloViewModel> GetBoards(long userId);
-        TrelloViewModel GetBoard(long id);
+        BoardViewModel GetBoard(long id);
         long CreateBoard(long userId, TrelloRequest request);
+        long CreateCard(CardRequest request);
     }
 }

@@ -1,8 +1,13 @@
+
+.card-container {
+    outline: none !important;
+}
+
 .card.card-body {
     height: 80px;
+    cursor: pointer;
 
     &.btn-secondary {
-        cursor: pointer;
         color: unset;
         &:hover {
             color: white;

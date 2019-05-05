@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   getBoard() {
     this.spinner.show();
     this.boardService
-        .getBoard()
+        .getBoards()
         .subscribe( success => {
           this.boards = success['data'];
           this.spinner.hide();

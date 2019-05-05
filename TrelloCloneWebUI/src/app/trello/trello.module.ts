@@ -6,15 +6,20 @@ import { AuthGuard } from '../auth/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { BoardCreateComponent } from './home/board-create/board-create.component';
+import { BoardComponent } from './board/board.component';
+import { TaskComponent } from './task/task.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
-]
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'board/:id', component: BoardComponent, canActivate: [AuthGuard]}
+];
 
 @NgModule({
   declarations: [
     HomeComponent,
-    BoardCreateComponent
+    BoardCreateComponent,
+    BoardComponent,
+    TaskComponent
   ],
   imports: [
     CommonModule,

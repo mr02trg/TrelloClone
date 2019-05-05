@@ -10,6 +10,7 @@ using TrelloCloneViewModel.Trello;
 
 namespace TrelloClone.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class BoardController : BaseController
     {
@@ -21,6 +22,7 @@ namespace TrelloClone.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(TrelloViewModel), 200)]
         public ActionResult Get()
         {
             IList<TrelloViewModel> boards = _service.GetBoards(this.UserId);
@@ -33,7 +35,7 @@ namespace TrelloClone.Controllers
 
         // GET api/<controller>/{id}
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(TrelloViewModel), 200)]
+        [ProducesResponseType(typeof(BoardViewModel), 200)]
         public ActionResult Get(int id)
         {
             var board = _service.GetBoard(id);
@@ -49,6 +51,16 @@ namespace TrelloClone.Controllers
             return Ok(new
             {
                 data = boardId
+            });
+        }
+
+        [HttpPost("card")]
+        public ActionResult CreateCard([FromBody]CardRequest request)
+        {
+            long cardId = _service.CreateCard(request);
+            return Ok(new
+            {
+                data = cardId
             });
         }
     }

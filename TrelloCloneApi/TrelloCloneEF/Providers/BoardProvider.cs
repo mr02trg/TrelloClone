@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,11 +37,15 @@ namespace TrelloCloneEF.Providers
             return newBoard.Id;
         }
 
-        public TrelloViewModel GetBoard(long id)
+        public BoardViewModel GetBoard(long id)
         {
-            var record = _context.Boards.First(x => x.Id == id);
+            var record = _context.Boards
+                                 .Include(x => x.Cards)
+                                 .Include("Cards.Tasks")
+                                 .Include("Cards.Tasks.SubTasks")
+                                 .First(x => x.Id == id);
 
-            return _mapper.Map<TrelloViewModel>(record);
+            return _mapper.Map<BoardViewModel>(record);
         }
 
         public IList<TrelloViewModel> GetBoards(long userId)
@@ -50,6 +55,21 @@ namespace TrelloCloneEF.Providers
                                   .ToList();
 
             return _mapper.Map<IList<TrelloViewModel>>(records);
+        }
+
+        public long CreateCard(CardRequest request)
+        {
+            var newCard = new Card()
+            {
+                Name = request.Name,
+                Priority = request.Priority,
+                BoardId = request.BoardId
+            };
+
+            _context.Cards.Add(newCard);
+            _context.SaveChanges();
+
+            return newCard.Id;
         }
     }
 }

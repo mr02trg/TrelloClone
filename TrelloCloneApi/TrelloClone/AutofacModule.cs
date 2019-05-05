@@ -26,18 +26,30 @@ namespace TrelloClone
             builder.RegisterType<BoardService>()
                     .As<IBoardService>()
                     .InstancePerLifetimeScope();
+
+            builder.RegisterType<TaskService>()
+                   .As<ITaskService>()
+                   .InstancePerLifetimeScope();
             #endregion
 
             #region Providers - Data Repository
             builder.RegisterType<BoardProvider>()
                     .As<IBoardProvider>()
                     .InstancePerLifetimeScope();
+
+            builder.RegisterType<TaskProvider>()
+                   .As<ITaskProvider>()
+                   .InstancePerLifetimeScope();
             #endregion
 
             #region DbContext
             builder.RegisterType<ApplicationDbContext>()
                     .As<IBoardContext>()
                     .InstancePerLifetimeScope();
+
+            builder.RegisterType<ApplicationDbContext>()
+                   .As<ITaskContext>()
+                   .InstancePerLifetimeScope();
             #endregion
 
 

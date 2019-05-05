@@ -1,0 +1,40 @@
+.board-wrapper {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:hover {
+        padding-bottom: 20px;
+        overflow-x: auto;
+    }
+
+    .card-wrapper {
+        min-width: 250px;
+
+        &:not(:first-child) {
+            margin-left: 10px;
+        }
+
+        .card.card-body {
+            width: 100%;
+            padding: 5px;
+
+            &.bg-grey {
+                background-color: lightgrey;
+            }
+
+            .title {
+                font-weight: 700;
+                font-size: 15px;
+                flex-grow: 1;
+            }
+
+            .add-task {
+                hr {
+                    margin-left: -5px;
+                    margin-right: -5px;
+                }
+            }
+        }
+    }
+}

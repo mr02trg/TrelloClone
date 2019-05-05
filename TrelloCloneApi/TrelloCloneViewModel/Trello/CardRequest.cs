@@ -4,11 +4,11 @@ using System.Text;
 
 namespace TrelloCloneViewModel.Trello
 {
-    // common dto
-    public class TrelloViewModel
+    public class CardRequest
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+        public int Priority { get; set; }
+        public long BoardId { get; set; }
     }
 }

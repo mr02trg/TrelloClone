@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row">
-    <div *ngFor="let board of boards" class="col-md-3 mb-3">
+    <div *ngFor="let board of boards" class="col-md-3 mb-3 card-container" [routerLink]="['/board', board.id]">
       <div class="card card-body">
         <div class="board-name">{{board.name}}</div>
       </div>

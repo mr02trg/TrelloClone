@@ -12,6 +12,6 @@ namespace TrelloCloneEFModel
         public long ApplicationUserId { get; set; }
         ApplicationUser ApplicationUser { get; set; }
 
-        public ICollection<Bucket> Buckets { get; set; }
+        public ICollection<Card> Cards { get; set; }
     }
 }

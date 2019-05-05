@@ -6,10 +6,10 @@ using TrelloCloneEFModel;
 
 namespace TrelloCloneEF.Contexts
 {
-    public interface IBoardContext
+    public interface ITaskContext
     {
-        DbSet<Board> Boards { get; set; }
-        DbSet<Card> Cards { get; set; }
+        DbSet<Task> Tasks { get; set; }
+        DbSet<SubTask> SubTasks { get; set; }
 
         int SaveChanges();
     }

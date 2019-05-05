@@ -10,7 +10,8 @@ using TrelloCloneEFModel;
 namespace TrelloCloneEF
 {
     public class ApplicationDbContext: IdentityDbContext<ApplicationUser, IdentityRole<long>, long>,
-                                       IBoardContext
+                                       IBoardContext,
+                                       ITaskContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -18,7 +19,7 @@ namespace TrelloCloneEF
         }
 
         public DbSet<Board> Boards { get; set; }
-        public DbSet<Bucket> Buckets { get; set; }
+        public DbSet<Card> Cards { get; set; }
         public DbSet<Task> Tasks { get; set; }
         public DbSet<SubTask> SubTasks { get; set; }
 

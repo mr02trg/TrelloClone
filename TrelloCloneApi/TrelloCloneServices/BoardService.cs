@@ -20,7 +20,12 @@ namespace TrelloCloneServices
             return _provider.CreateBoard(userId, request);
         }
 
-        public TrelloViewModel GetBoard(long id)
+        public long CreateCard(CardRequest request)
+        {
+            return _provider.CreateCard(request);
+        }
+
+        public BoardViewModel GetBoard(long id)
         {
             return _provider.GetBoard(id);
         }

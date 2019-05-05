@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TrelloCloneEFModel
+namespace TrelloCloneViewModel.Trello
 {
-    public class Bucket : BaseModel
+    public class CardViewModel : TrelloViewModel
     {
         public int Priority { get; set; }
         public bool IsArchived { get; set; }
 
         public long BoardId { get; set; }
-        public Board Board { get; set; }
 
-        public ICollection<Task> Tasks { get; set; }
+        public IList<TaskViewModel> Tasks { get; set; }
     }
 }

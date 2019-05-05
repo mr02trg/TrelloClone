@@ -11,7 +11,11 @@ namespace TrelloClone
     {
         public AutoMapperConfig()
         {
-            CreateMap<Board, TrelloViewModel>().ReverseMap();
+            CreateMap<Board, TrelloViewModel>();
+            CreateMap<Board, BoardViewModel>().ReverseMap();
+            CreateMap<Card, CardViewModel>().ReverseMap();
+            CreateMap<TrelloCloneEFModel.Task, TaskViewModel>().ReverseMap();
+            CreateMap<SubTask, SubTaskViewModel>().ReverseMap();
         }
     }
 }
