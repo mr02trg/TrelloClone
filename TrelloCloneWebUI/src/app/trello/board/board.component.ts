@@ -10,6 +10,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import { BoardViewModel } from 'src/app/swagger/model/boardViewModel';
 import { CardRequest } from 'src/app/swagger/model/cardRequest';
 import { TaskRequest } from 'src/app/swagger/model/taskRequest';
+import { DragulaService } from 'ng2-dragula';
 
 
 @Component({
@@ -22,13 +23,21 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor(
     private boardService: BoardService,
     private route: ActivatedRoute,
-    private spinner: SpinnerService
-  ) { }
+    private spinner: SpinnerService,
+    private dragulaService: DragulaService
+  ) {
+    this.dragulaService.createGroup('COLUMNS', {
+      direction: 'horizontal',
+      moves: (el, source, handle) => {
+        return handle.classList.contains('card-handle');
+      }
+    });
+  }
 
   // board
   subscriptions: Subscription[] = [];
   boardId: number;
-  board: BoardViewModel
+  board: BoardViewModel = {};
 
   // card
   isCardAdd = false;

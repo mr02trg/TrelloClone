@@ -1,29 +1,33 @@
 
 <h2 class="mb-3">{{board?.name}}</h2>
-<div class="board-wrapper">
-  <div *ngFor="let card of board?.cards" class="card-wrapper">
-    <div class="card card-body bg-grey">
-      <div class="d-flex">  
-        <div class="title">{{card?.name}}</div>
-        <button class="btn p-0"><i class="fas fa-ellipsis-h"></i></button>
-      </div>
-      <div *ngFor="let task of card.tasks">
-        <app-task [task]="task"></app-task>
-      </div>
-      <div class="add-task">
-        <div *ngIf="isTaskAdd && card.id == targetCardId">
-            <hr />
-            <div class="form-group">
-              <input type="text" class="form-control" [(ngModel)]="newTask.name" placeholder="Task Name"/>
-            </div>
-            <div class="d-flex">
-              <button class="btn btn-primary" (click)="addTask(card.id)">Add Task</button>
-              <button class="btn btn-border" (click)="cancelAddTask()">Cancel</button>
-            </div>
+<div class="d-flex">
+  <div class="board-wrapper" dragula="COLUMNS" [(dragulaModel)]="board.cards">
+    <div *ngFor="let card of board.cards" class="card-wrapper">
+      <div class="card card-body bg-grey">
+        <div class="d-flex">  
+          <div class="title card-handle">{{card?.name}}</div>
+          <button class="btn p-0"><i class="fas fa-ellipsis-h"></i></button>
         </div>
-        <button *ngIf="! isTaskAdd || card.id != targetCardId"
-                class="btn btn-light w-100" 
-                (click)="isTaskAdd = true; targetCardId = card.id"><i class="fas fa-plus"></i> Add Task</button>
+        <div class="task-container" dragula="ITEMS" [(dragulaModel)]="card.tasks">
+          <div *ngFor="let task of card.tasks">
+            <app-task [task]="task"></app-task>
+          </div>
+        </div>
+        <div class="add-task">
+          <div *ngIf="isTaskAdd && card.id == targetCardId">
+              <hr />
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="newTask.name" placeholder="Task Name"/>
+              </div>
+              <div class="d-flex">
+                <button class="btn btn-primary" (click)="addTask(card.id)">Add Task</button>
+                <button class="btn btn-border" (click)="cancelAddTask()">Cancel</button>
+              </div>
+          </div>
+          <button *ngIf="! isTaskAdd || card.id != targetCardId"
+                  class="btn btn-light w-100" 
+                  (click)="isTaskAdd = true; targetCardId = card.id"><i class="fas fa-plus"></i> Add Task</button>
+        </div>
       </div>
     </div>
   </div>

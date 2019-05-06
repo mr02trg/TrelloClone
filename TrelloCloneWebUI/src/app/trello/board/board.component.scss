@@ -2,6 +2,7 @@
     display: flex;
     white-space: nowrap;
     overflow: hidden;
+    margin-right: 10px;
 
     &:hover {
         padding-bottom: 20px;
@@ -10,10 +11,7 @@
 
     .card-wrapper {
         min-width: 250px;
-
-        &:not(:first-child) {
-            margin-left: 10px;
-        }
+        margin-left: 10px;
 
         .card.card-body {
             width: 100%;
@@ -27,6 +25,10 @@
                 font-weight: 700;
                 font-size: 15px;
                 flex-grow: 1;
+            }
+            
+            .task-container {
+                min-height: 5px;
             }
 
             .add-task {

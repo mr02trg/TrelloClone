@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
+import { DragulaModule } from 'ng2-dragula';
 
 import { HomeComponent } from './home/home.component';
 import { BoardCreateComponent } from './home/board-create/board-create.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragulaModule.forRoot()
   ],
   exports: [
     HomeComponent
